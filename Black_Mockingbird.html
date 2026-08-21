@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДОСЬЕ ПХ: БАСТИОН — ОБЪЕКТ CH-07</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Roboto+Condensed:wght@300;400;700&family=Special+Elite&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 15px;
+            font-family: 'Roboto Condensed', sans-serif;
+            background-image: 
+                radial-gradient(circle at 30% 40%, #1a0505 0%, #000000 90%),
+                repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(180, 20, 20, 0.02) 50px, rgba(180, 20, 20, 0.02) 51px);
+        }
+
+        .dossier {
+            max-width: 1000px;
+            width: 100%;
+            background: #121010;
+            padding: 30px 35px 25px 35px;
+            border-radius: 0px;
+            box-shadow: 
+                0 0 40px rgba(180, 20, 20, 0.25),
+                0 0 80px rgba(180, 0, 0, 0.08),
+                inset 0 0 60px rgba(0, 0, 0, 0.9),
+                inset 0 0 0 1px #3a1a1a;
+            border-left: 6px solid #b01010;
+            border-right: 6px solid #6a0a0a;
+            position: relative;
+        }
+
+        .dossier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(80, 10, 10, 0.03) 80px, rgba(80, 10, 10, 0.03) 81px),
+                radial-gradient(ellipse at 80% 20%, rgba(200, 30, 30, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .dossier * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .chaos-stamp {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            transform: rotate(-8deg);
+            border: 4px double #8b1a1a;
+            color: #cc2222;
+            padding: 6px 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            background: rgba(139, 26, 26, 0.12);
+            box-shadow: 0 0 30px rgba(200, 0, 0, 0.15);
+            text-shadow: 0 0 15px rgba(200, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .chaos-stamp span {
+            color: #ffffff;
+            opacity: 0.3;
+            font-weight: 300;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #2a1515;
+            padding-bottom: 14px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .chaos-icon {
+            font-size: 2.2rem;
+            color: #b01010;
+            text-shadow: 0 0 30px rgba(200, 0, 0, 0.3);
+            font-family: 'Special Elite', cursive;
+            line-height: 1;
+        }
+
+        .title-group h1 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 2.6rem;
+            letter-spacing: 6px;
+            color: #d0c8c0;
+            text-shadow: 0 0 20px rgba(180, 20, 20, 0.2);
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .title-group .subhead {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #7a5a5a;
+            margin-top: 4px;
+        }
+
+        .title-group .subhead strong {
+            color: #b03030;
+            font-weight: 700;
+        }
+
+        .id-tag {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 0.75rem;
+            background: #1a0a0a;
+            color: #aa3a3a;
+            padding: 6px 18px;
+            border: 1px solid #3a1a1a;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            align-self: center;
+            box-shadow: inset 0 0 20px rgba(180, 0, 0, 0.1);
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 30px;
+            margin-bottom: 25px;
+        }
+
+        .info-block {
+            background: rgba(30, 10, 10, 0.5);
+            padding: 12px 16px;
+            border-left: 3px solid #8b1a1a;
+            border-bottom: 1px solid #2a1515;
+        }
+
+        .info-block .label {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #7a4a4a;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .info-block .value {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #d0c0b8;
+            letter-spacing: 0.5px;
+        }
+
+        .info-block .value .highlight {
+            color: #e04040;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #1a0a0a;
+            color: #cc3333;
+            padding: 2px 18px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 1px solid #5a1a1a;
+            text-shadow: 0 0 15px rgba(200, 0, 0, 0.2);
+        }
+
+        .status-badge.active {
+            color: #ff4444;
+            border-color: #aa2222;
+            animation: pulse-border 1.5s ease-in-out infinite;
+            box-shadow: 0 0 25px rgba(200, 0, 0, 0.15);
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: #aa2222; box-shadow: 0 0 15px rgba(200, 0, 0, 0.1); }
+            50% { border-color: #ff3333; box-shadow: 0 0 35px rgba(200, 0, 0, 0.25); }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #b0a098;
+            border-bottom: 1px solid #2a1515;
+            padding-bottom: 6px;
+            margin: 28px 0 14px 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title .badge {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.65rem;
+            background: #1a0a0a;
+            color: #7a4a4a;
+            padding: 2px 14px;
+            border: 1px solid #2a1515;
+            letter-spacing: 2px;
+        }
+
+        .section-title .badge.active-op {
+            background: #2a0a0a;
+            color: #ff4444;
+            border-color: #8b1a1a;
+            animation: pulse-op 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-op {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .history-text {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #b0a098;
+            background: rgba(20, 5, 5, 0.6);
+            padding: 16px 20px;
+            border-left: 4px solid #6a1a1a;
+            margin-bottom: 16px;
+            text-align: justify;
+            border-bottom: 1px solid #1a0f0f;
+        }
+
+        .history-text strong {
+            font-weight: 700;
+            color: #d06050;
+        }
+
+        .history-text .accent {
+            color: #e04040;
+            font-weight: 700;
+        }
+
+        .history-text .chaos-highlight {
+            color: #ff4444;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(200, 0, 0, 0.15);
+        }
+
+        .base-info {
+            background: #0f0808;
+            border: 1px solid #2a1515;
+            padding: 14px 20px;
+            margin: 12px 0 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-left: 6px solid #6a1a1a;
+        }
+
+        .base-info .base-name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #d0c0b8;
+            letter-spacing: 4px;
+        }
+
+        .base-info .base-name .highlight {
+            color: #cc3333;
+        }
+
+        .base-info .base-status {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: #7a5a5a;
+            letter-spacing: 2px;
+        }
+
+        .base-info .base-status .active-status {
+            color: #44cc44;
+            font-weight: 700;
+            text-shadow: 0 0 25px rgba(68, 204, 68, 0.25);
+            animation: pulse-green 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px rgba(68, 204, 68, 0.15); }
+            50% { opacity: 0.7; text-shadow: 0 0 35px rgba(68, 204, 68, 0.35); }
+        }
+
+        .base-info .base-role {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: #5a4a4a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(30, 10, 10, 0.3);
+            padding: 2px 14px;
+            border: 1px solid #1a0f0f;
+        }
+
+        .motives-box {
+            background: #0f0808;
+            color: #b0a098;
+            padding: 18px 24px;
+            margin: 16px 0 6px 0;
+            border-left: 8px solid #8b1a1a;
+            border-right: 1px solid #2a1515;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            font-style: italic;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .motives-box strong {
+            color: #e06050;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .motives-box .nanobots {
+            color: #ff6666;
+            font-weight: 700;
+            text-shadow: 0 0 25px rgba(200, 0, 0, 0.15);
+        }
+
+        .motives-box .pain-text {
+            color: #cc4444;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0 8px 0;
+        }
+
+        .ability-item {
+            background: rgba(20, 5, 5, 0.5);
+            padding: 12px 14px;
+            border-bottom: 3px solid #6a1a1a;
+            border-left: 1px solid #2a1515;
+        }
+
+        .ability-item .title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7a4a4a;
+            display: block;
+        }
+
+        .ability-item .desc {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #c0b0a8;
+        }
+
+        .ability-item .desc small {
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: #6a5a5a;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .event-block {
+            background: rgba(20, 5, 5, 0.5);
+            padding: 12px 18px;
+            border-left: 4px solid #6a1a1a;
+            margin: 6px 0 12px 0;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #b0a098;
+        }
+
+        .event-block strong {
+            font-weight: 700;
+            color: #d06050;
+        }
+
+        .event-block .chaos-tag {
+            color: #cc3333;
+            font-weight: 600;
+            font-size: 0.75rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 2px;
+        }
+
+        .event-block .active-op-tag {
+            color: #ff4444;
+            font-weight: 700;
+            font-size: 0.7rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 2px;
+            animation: pulse-op 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* ==========================================================
+           ГЛЮЧИ В ФОРМАТЕ ДАТЫ — КОМПАКТНЫЙ
+           ========================================================== */
+        .glitch-wrapper {
+            display: inline-block;
+            position: relative;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            background: rgba(10, 5, 5, 0.4);
+            padding: 3px 12px;
+            border: 1px solid #3a2a2a;
+            box-shadow: 
+                inset 0 0 20px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(180, 20, 20, 0.05);
+            overflow: hidden;
+            vertical-align: middle;
+            min-width: 140px;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .glitch-wrapper.green-glow {
+            border-color: #44cc44;
+            box-shadow: 0 0 30px rgba(68, 204, 68, 0.2), inset 0 0 30px rgba(68, 204, 68, 0.05);
+            animation: wrapper-green-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes wrapper-green-pulse {
+            0%, 100% { border-color: #44cc44; box-shadow: 0 0 30px rgba(68, 204, 68, 0.2), inset 0 0 30px rgba(68, 204, 68, 0.05); }
+            50% { border-color: #66ee66; box-shadow: 0 0 50px rgba(68, 204, 68, 0.4), inset 0 0 40px rgba(68, 204, 68, 0.1); }
+        }
+
+        .glitch-text {
+            display: inline-block;
+            color: #7a8a8a;
+            font-weight: 700;
+            position: relative;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            min-width: 130px;
+            text-shadow: 0 0 8px rgba(100, 150, 200, 0.05);
+            font-family: 'Orbitron', monospace;
+            vertical-align: middle;
+        }
+
+        .glitch-digit {
+            display: inline-block;
+            animation: digit-glitch var(--duration, 0.8s) infinite steps(1);
+            color: var(--digit-color, #7a8a8a);
+            text-shadow: var(--digit-glow, none);
+            transition: color 0.3s, text-shadow 0.3s;
+            font-family: 'Orbitron', monospace;
+            min-width: 8px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 0.8rem;
+        }
+
+        .glitch-separator {
+            display: inline-block;
+            color: #5a4a4a;
+            font-family: 'Orbitron', monospace;
+            min-width: 4px;
+            text-align: center;
+            opacity: 0.5;
+            vertical-align: middle;
+            font-size: 0.75rem;
+            transition: color 0.3s;
+        }
+
+        /* ЗЕЛЁНЫЙ ЦВЕТ ДЛЯ ПРАВИЛЬНОЙ ДАТЫ */
+        .glitch-correct {
+            display: inline-block;
+            color: #44cc44 !important;
+            text-shadow: 0 0 20px rgba(68, 204, 68, 0.4), 0 0 40px rgba(68, 204, 68, 0.15) !important;
+            animation: correct-pulse 1.5s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes correct-pulse {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(68, 204, 68, 0.4), 0 0 40px rgba(68, 204, 68, 0.15); }
+            50% { opacity: 0.8; text-shadow: 0 0 35px rgba(68, 204, 68, 0.6), 0 0 60px rgba(68, 204, 68, 0.25); }
+        }
+
+        .glitch-separator.green {
+            color: #44cc44 !important;
+            opacity: 0.8;
+        }
+
+        @keyframes digit-glitch {
+            0%, 85%, 100% { 
+                color: var(--digit-color, #7a8a8a); 
+                text-shadow: var(--digit-glow, none);
+                transform: translate(0, 0);
+            }
+            88% { 
+                color: #ff3344; 
+                text-shadow: 0 0 15px rgba(255, 51, 68, 0.5);
+                transform: translate(-1px, 1px);
+            }
+            91% { 
+                color: var(--digit-color, #7a8a8a); 
+                text-shadow: var(--digit-glow, none);
+                transform: translate(0, 0);
+            }
+            94% { 
+                color: #44ccff; 
+                text-shadow: 0 0 15px rgba(68, 204, 255, 0.5);
+                transform: translate(1px, -1px);
+            }
+            97% { 
+                color: var(--digit-color, #7a8a8a); 
+                text-shadow: var(--digit-glow, none);
+                transform: translate(0, 0);
+            }
+        }
+
+        .glitch-error {
+            display: inline-block;
+            color: #ff2244 !important;
+            text-shadow: 0 0 20px rgba(255, 34, 68, 0.6), 0 0 40px rgba(255, 34, 68, 0.2) !important;
+            animation: error-flash 0.3s infinite alternate;
+            font-weight: 900;
+            vertical-align: middle;
+        }
+
+        @keyframes error-flash {
+            0% { opacity: 1; text-shadow: 0 0 20px rgba(255, 34, 68, 0.6), 0 0 40px rgba(255, 34, 68, 0.2); }
+            100% { opacity: 0.3; text-shadow: 0 0 8px rgba(255, 34, 68, 0.1); }
+        }
+
+        .glitch-wrapper.flash {
+            animation: wrapper-flash 0.1s 3;
+        }
+
+        @keyframes wrapper-flash {
+            0% { border-color: #ff2244; box-shadow: 0 0 25px rgba(255, 34, 68, 0.3), inset 0 0 25px rgba(255, 34, 68, 0.1); }
+            100% { border-color: #3a2a2a; box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(180, 20, 20, 0.05); }
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 28px;
+            padding-top: 14px;
+            border-top: 1px solid #1a0f0f;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: #5a4a4a;
+            flex-wrap: wrap;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            gap: 8px 15px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+        }
+
+        .footer-left .label {
+            white-space: nowrap;
+            font-size: 0.7rem;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-right .reserved {
+            background: #1a0a0a;
+            color: #aa3a3a;
+            padding: 3px 14px;
+            border: 1px solid #2a1515;
+            font-family: 'Orbitron', monospace;
+            font-weight: 400;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .footer-right .id-bottom {
+            opacity: 0.4;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55rem;
+            white-space: nowrap;
+        }
+
+        .bottom-seal {
+            margin-top: 14px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 300;
+            font-size: 0.55rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #3a2a2a;
+            border-top: 1px solid #1a0f0f;
+            padding-top: 12px;
+            text-align: right;
+        }
+
+        .bottom-seal .chaos-base {
+            color: #6a3a3a;
+            font-weight: 400;
+        }
+
+        @media (max-width: 750px) {
+            .dossier { padding: 20px; }
+            .grid-2col { grid-template-columns: 1fr; gap: 10px; }
+            .abilities-grid { grid-template-columns: 1fr 1fr; }
+            .title-group h1 { font-size: 1.8rem; letter-spacing: 3px; }
+            .chaos-stamp { position: static; transform: none; display: inline-block; margin-top: 10px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .id-tag { margin-top: 8px; }
+            .logo-area { flex-wrap: wrap; }
+            .base-info { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .glitch-wrapper { font-size: 0.7rem; padding: 2px 10px; min-width: 120px; }
+            .glitch-text { font-size: 0.65rem; min-width: 110px; }
+            .glitch-digit { font-size: 0.65rem; min-width: 7px; }
+            .footer-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .footer-right { width: 100%; justify-content: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .abilities-grid { grid-template-columns: 1fr; }
+            .dossier { padding: 12px; }
+            .title-group h1 { font-size: 1.4rem; }
+            .motives-box { font-size: 0.95rem; padding: 14px; }
+            .base-info .base-name { font-size: 1.1rem; }
+            .glitch-wrapper { font-size: 0.55rem; padding: 2px 6px; min-width: 100px; letter-spacing: 1px; }
+            .glitch-text { font-size: 0.5rem; min-width: 90px; letter-spacing: 1px; }
+            .glitch-digit { font-size: 0.5rem; min-width: 6px; }
+            .glitch-separator { font-size: 0.5rem; min-width: 3px; }
+            .footer-left .label { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dossier">
+
+        <div class="chaos-stamp">
+            ⚡ ПХ · СЕКТОР <span>//</span> 7-К
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="chaos-icon">⛓️</div>
+                <div class="title-group">
+                    <h1>БАСТИОН</h1>
+                    <div class="subhead">Объект <strong>CH-07</strong> · Живой доспех · <span style="color:#6a2a2a;">последний из рода</span></div>
+                </div>
+            </div>
+            <div class="id-tag">#CH-07 · СУБЪЕКТ «КРЕПОСТЬ»</div>
+        </div>
+
+        <div class="grid-2col">
+            <div class="info-block">
+                <span class="label">Статус</span>
+                <div class="value"><span class="status-badge active">АКТИВЕН</span> <span style="margin-left: 10px; font-size: 0.9rem; font-weight: 300; color:#6a5a5a;">(боевая готовность)</span></div>
+            </div>
+            <div class="info-block">
+                <span class="label">Оператор</span>
+                <div class="value">«Пряник» <span style="font-weight:300; color:#6a5a5a; font-size:0.9rem;">// ПХ-сектор 7</span></div>
+            </div>
+            <div class="info-block">
+                <span class="label">Класс угрозы</span>
+                <div class="value"><span class="highlight">БАГРОВЫЙ</span> · Тяжёлый штурм</div>
+            </div>
+            <div class="info-block">
+                <span class="label">Боевые параметры</span>
+                <div class="value">❤️ <span style="color:#e04040;">750 HP</span> · 🛡️ 20% резерв</div>
+            </div>
+        </div>
+
+        <div class="base-info">
+            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <div class="base-name">
+                    ⚫ <span class="highlight">ЧЁРНЫЙ ПЕРЕСМЕШНИК</span>
+                </div>
+                <div class="base-role">▸ ОСНОВНАЯ БАЗА ОТПРАВЛЕНИЯ</div>
+            </div>
+            <div class="base-status">
+                ███ <span class="active-status">● АКТИВНА</span> ███
+            </div>
+        </div>
+
+        <div class="section-title">
+            ⚔️ ХРОНИКИ ПАДЕНИЯ
+            <span class="badge">IV ОККУЛЬТНАЯ</span>
+        </div>
+        <div class="history-text">
+            <strong>«Восстание аномалий»</strong> — мясорубка, в которой сгорела целая раса. Призванные <strong>SCP-2000</strong>, живые доспехи стали пушечным мясом в битве за остров <span class="accent">«Перелик»</span>.
+            <br><br>
+            Их убивали не люди — их <span class="chaos-highlight">СЪЕЛИ</span>. Паразиты <span class="accent">«Мерак»</span> выпивали аномальную энергию, превращая легендарных воинов в ржавые груды металла. А затем паразиты вымерли сами — им больше нечем было питаться.
+            <br><br>
+            <span class="chaos-highlight">НО ОДИН ВЫЖИЛ.</span> Последний из вида был найден в руинах тюрьмы <strong>«Золотой грош»</strong> — после того, как агенты ПХ <strong>«Золотая Мельница»</strong> стёрли её с лица земли. Теперь он <span class="accent">принадлежит нам</span>.
+            <br><br>
+            <span style="color:#6a4a4a;">База «Чёрный Пересмешник»</span> — основная точка дислокации и отправления. Объект содержится в изолированном отсеке <strong>сектора 7-К</strong>.
+        </div>
+
+        <div class="section-title" style="margin-top: 18px;">
+            🩸 МОТИВАЦИЯ
+            <span class="badge">ПРИНУДИТЕЛЬНАЯ</span>
+        </div>
+        <div class="motives-box">
+            «Я сражаюсь, потому что <strong>боль</strong> — это единственный язык, который я помню.  
+            В моём теле — <span class="nanobots">наноботы «Шапель»</span>. Они <span class="pain-text">разъедают меня изнутри</span>,  
+            каждый наносекундный импульс — <strong>крик расплавленного металла</strong>.  
+            Это — <strong>поводок</strong>. И я <span style="color:#cc4444;">ненавижу</span> того, кто его держит.»
+        </div>
+
+        <div class="section-title" style="margin-top: 28px;">
+            ⛓️ ОСОБЕННОСТИ &amp; СНАРЯЖЕНИЕ
+            <span class="badge">БОЕВОЙ МОДУЛЬ</span>
+        </div>
+        <div class="abilities-grid">
+            <div class="ability-item">
+                <span class="title">Невоскрешаемый</span>
+                <div class="desc">⛔ <small>финальная смерть — без возврата</small></div>
+            </div>
+            <div class="ability-item">
+                <span class="title">Броня Хаоса</span>
+                <div class="desc">❤️ 750 HP</div>
+            </div>
+            <div class="ability-item">
+                <span class="title">Регенерация</span>
+                <div class="desc">🧪 3 банки <small>металло-гель</small></div>
+            </div>
+            <div class="ability-item">
+                <span class="title">Пассивная защита</span>
+                <div class="desc">🛡️ 20% <small>сопротивление урону</small></div>
+            </div>
+            <div class="ability-item" style="grid-column: span 2;">
+                <span class="title">Аномальная структура</span>
+                <div class="desc">⚡ <small>иммунитет к ментальному контролю · уязвимость к «Мерак»-подобным сущностям</small></div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 24px;">
+            🗺️ УЧАСТИЕ В ОПЕРАЦИЯХ
+            <span class="badge active-op">● АКТИВНА</span>
+        </div>
+        <div class="event-block">
+            <span class="active-op-tag">[ОПЕРАЦИЯ #01 — ВЕДЁТСЯ]</span>
+            <strong>«Трупы трупам рознь»</strong> — объект задействован в текущей миссии. 
+            <span style="color:#6a3a3a; font-size:0.8rem; display:block; margin-top:4px;">
+                ▸ Точка отправления: <span style="color:#cc3333;">«Чёрный Пересмешник»</span> · Статус: <span style="color:#ff4444;">активная фаза</span>
+            </span>
+        </div>
+        <div class="event-block" style="border-left-color: #3a1a1a; opacity: 0.7;">
+            <span class="chaos-tag" style="color:#4a3a3a;">[ОЖИДАНИЕ]</span> <em>… объект находится под постоянным наблюдением отдела кибер-контроля ПХ.</em>
+        </div>
+
+        <!-- ФУТЕР — С ЗЕЛЁНОЙ ДАТОЙ КАЖДЫЕ 10 СЕКУНД -->
+        <div class="footer-meta">
+            <div class="footer-left">
+                <span class="label">Досье обновлено:</span>
+                <span class="glitch-wrapper" id="glitchContainer">
+                    <span class="glitch-text" id="glitchText"></span>
+                </span>
+                <span style="color:#4a2a2a; margin-left:6px; font-size:0.65rem;">// ПХ-архив</span>
+            </div>
+            <div class="footer-right">
+                <span class="reserved">🎲 «Пряник» · ОПЕРАТОР</span>
+                <span class="id-bottom">CH-07 · БАСТИОН</span>
+            </div>
+        </div>
+
+        <div class="bottom-seal">
+            ⏤ ПОВСТАНЦЫ ХАОСА · <span class="chaos-base">БАЗА «ЧЁРНЫЙ ПЕРЕСМЕШНИК»</span> ⏤
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Целевая дата: 21:08:2026
+            const TARGET_DATE = ['2','1','0','8','2','0','2','6'];
+            const DIGIT_COUNT = 8;
+            const SEPARATOR_INDEXES = [2, 5];
+            const SEPARATORS = [':', ':'];
+            
+            const digits = '0123456789';
+            
+            const glitchText = document.getElementById('glitchText');
+            const container = document.getElementById('glitchContainer');
+            
+            let currentDigits = [];
+            let errorMode = false;
+            let errorCountdown = 0;
+            let isCorrect = false;
+            let isGreenMode = false; // Режим зелёной даты
+            let greenTimer = null;
+            
+            function init() {
+                for (let i = 0; i < DIGIT_COUNT; i++) {
+                    currentDigits.push({
+                        digit: getRandomDigit(),
+                        duration: 0.3 + Math.random() * 1.2,
+                        color: '#7a8a8a',
+                        glow: 'none',
+                        isError: false
+                    });
+                }
+                render();
+            }
+            
+            function getRandomDigit() {
+                return digits[Math.floor(Math.random() * digits.length)];
+            }
+            
+            // Установить целевую дату (зелёный режим)
+            function setTargetDate() {
+                isGreenMode = true;
+                isCorrect = true;
+                
+                // Устанавливаем цифры
+                for (let i = 0; i < DIGIT_COUNT; i++) {
+                    currentDigits[i].digit = TARGET_DATE[i];
+                    currentDigits[i].color = '#44cc44';
+                    currentDigits[i].glow = '0 0 20px rgba(68,204,68,0.4)';
+                    currentDigits[i].isError = false;
+                }
+                
+                // Зелёное свечение контейнера
+                container.classList.add('green-glow');
+                
+                render();
+                
+                // Через 5 секунд выключаем зелёный режим
+                if (greenTimer) clearTimeout(greenTimer);
+                greenTimer = setTimeout(() => {
+                    exitGreenMode();
+                }, 5000 + Math.random() * 1000); // 5-6 секунд
+            }
+            
+            // Выход из зелёного режима
+            function exitGreenMode() {
+                isGreenMode = false;
+                isCorrect = false;
+                container.classList.remove('green-glow');
+                
+                for (let i = 0; i < DIGIT_COUNT; i++) {
+                    if (!currentDigits[i].isError) {
+                        currentDigits[i].digit = getRandomDigit();
+                        currentDigits[i].color = '#7a8a8a';
+                        currentDigits[i].glow = 'none';
+                    }
+                }
+                render();
+                
+                // Запускаем следующий цикл через ~10 секунд
+                scheduleNextGreen();
+            }
+            
+            // Планируем следующее появление зелёной даты
+            function scheduleNextGreen() {
+                const delay = 8000 + Math.random() * 4000; // 8-12 секунд
+                setTimeout(() => {
+                    setTargetDate();
+                }, delay);
+            }
+            
+            // Обновление цифр (только когда не в зелёном режиме)
+            function updateDigit() {
+                if (isGreenMode) return; // В зелёном режиме ничего не меняем
+                
+                // Режим ошибки
+                if (Math.random() < 0.06 && !errorMode) {
+                    errorMode = true;
+                    errorCountdown = 6 + Math.floor(Math.random() * 8);
+                    
+                    const errorCount = 2 + Math.floor(Math.random() * 3);
+                    for (let i = 0; i < errorCount; i++) {
+                        const idx = Math.floor(Math.random() * DIGIT_COUNT);
+                        currentDigits[idx].digit = getRandomDigit();
+                        currentDigits[idx].color = '#ff2244';
+                        currentDigits[idx].glow = '0 0 20px rgba(255,34,68,0.6), 0 0 40px rgba(255,34,68,0.2)';
+                        currentDigits[idx].isError = true;
+                    }
+                    
+                    container.classList.add('flash');
+                    setTimeout(() => container.classList.remove('flash'), 400);
+                    render();
+                    return;
+                }
+                
+                // Выход из режима ошибки
+                if (errorMode) {
+                    errorCountdown--;
+                    
+                    if (Math.random() < 0.35) {
+                        const idx = Math.floor(Math.random() * DIGIT_COUNT);
+                        if (currentDigits[idx].isError) {
+                            currentDigits[idx].digit = getRandomDigit();
+                            currentDigits[idx].color = '#7a8a8a';
+                            currentDigits[idx].glow = 'none';
+                            currentDigits[idx].isError = false;
+                        }
+                    }
+                    
+                    if (errorCountdown <= 0) {
+                        errorMode = false;
+                        for (let i = 0; i < DIGIT_COUNT; i++) {
+                            if (currentDigits[i].isError) {
+                                currentDigits[i].digit = getRandomDigit();
+                                currentDigits[i].color = '#7a8a8a';
+                                currentDigits[i].glow = 'none';
+                                currentDigits[i].isError = false;
+                            }
+                        }
+                    }
+                    
+                    render();
+                    return;
+                }
+                
+                // Нормальный режим (хаотичные цифры)
+                const updates = 1 + Math.floor(Math.random() * 2);
+                for (let u = 0; u < updates; u++) {
+                    const idx = Math.floor(Math.random() * DIGIT_COUNT);
+                    if (!currentDigits[idx].isError) {
+                        currentDigits[idx].digit = getRandomDigit();
+                        
+                        if (Math.random() < 0.04) {
+                            const isBlue = Math.random() > 0.5;
+                            currentDigits[idx].color = isBlue ? '#44ccff' : '#ff8844';
+                            currentDigits[idx].glow = `0 0 15px rgba(${isBlue ? '68,204,255' : '255,136,68'}, 0.3)`;
+                        } else {
+                            currentDigits[idx].color = '#7a8a8a';
+                            currentDigits[idx].glow = 'none';
+                        }
+                    }
+                }
+                render();
+            }
+            
+            function render() {
+                let html = '';
+                let digitIndex = 0;
+                const isGreen = isGreenMode;
+                
+                for (let pos = 0; pos < DIGIT_COUNT + SEPARATOR_INDEXES.length; pos++) {
+                    if (SEPARATOR_INDEXES.includes(pos)) {
+                        const sepIdx = SEPARATOR_INDEXES.indexOf(pos);
+                        const sepClass = isGreen ? 'glitch-separator green' : 'glitch-separator';
+                        html += `<span class="${sepClass}">${SEPARATORS[sepIdx]}</span>`;
+                    } else {
+                        const d = currentDigits[digitIndex];
+                        const duration = 0.3 + Math.random() * 1.0;
+                        const style = `--duration: ${duration}s; --digit-color: ${d.color}; --digit-glow: ${d.glow};`;
+                        
+                        let className = 'glitch-digit';
+                        if (d.isError) {
+                            className += ' glitch-error';
+                        } else if (isGreen) {
+                            className += ' glitch-correct';
+                        }
+                        
+                        html += `<span class="${className}" style="${style}">${d.digit}</span>`;
+                        digitIndex++;
+                    }
+                }
+                glitchText.innerHTML = html;
+            }
+            
+            // Запуск
+            init();
+            
+            // Первое появление зелёной даты через 2 секунды
+            setTimeout(() => {
+                setTargetDate();
+            }, 2000);
+            
+            // Обновление цифр (когда не в зелёном режиме)
+            setInterval(updateDigit, 130 + Math.random() * 70);
+            
+            // Дополнительный эффект — мерцание в зелёном режиме
+            setInterval(() => {
+                if (isGreenMode && Math.random() < 0.3) {
+                    for (let i = 0; i < DIGIT_COUNT; i++) {
+                        if (!currentDigits[i].isError) {
+                            currentDigits[i].color = '#44cc44';
+                            currentDigits[i].glow = '0 0 30px rgba(68,204,68,0.6), 0 0 60px rgba(68,204,68,0.2)';
+                        }
+                    }
+                    render();
+                    setTimeout(() => {
+                        if (isGreenMode) {
+                            for (let i = 0; i < DIGIT_COUNT; i++) {
+                                if (!currentDigits[i].isError) {
+                                    currentDigits[i].color = '#44cc44';
+                                    currentDigits[i].glow = '0 0 20px rgba(68,204,68,0.4)';
+                                }
+                            }
+                            render();
+                        }
+                    }, 200);
+                }
+            }, 2000);
+            
+        })();
+    </script>
+</body>
+</html>
